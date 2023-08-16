@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { DatabaseModule } from './database/database.module';
 import appConfig from './config/app.config';
 import { ConfigModule } from '@nestjs/config'
@@ -23,7 +21,7 @@ import { VALIDATOR } from "./config/env-config.validator";
     }),
 
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
