@@ -1,5 +1,14 @@
 import { Sequelize } from 'sequelize-typescript';
 import { User } from './models/user.model';
+import { Author } from './models/author.model';
+import { AuthorBook } from './models/author-book.model';
+import { Book } from './models/book.model';
+import { Category } from './models/category.model';
+import { CategoryBook } from './models/category-book.model';
+import { Order } from './models/order.model';
+import { OrderBook } from './models/order-book.model';
+import { Publishing } from './models/publishing.model';
+import { PublishingBook } from './models/publishing-book.model';
 
 export const databaseProviders = [
   {
@@ -13,7 +22,7 @@ export const databaseProviders = [
         password: process.env.DB_PASSWORD,
         database: process.env.DB_SCHEMA,
       });
-      sequelize.addModels([User]);
+      sequelize.addModels([User, Author, AuthorBook, Book, Category, CategoryBook, Order, OrderBook, Publishing, PublishingBook]);
       // await sequelize.sync();
       await sequelize.sync(
          { alter: true }
