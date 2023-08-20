@@ -1,4 +1,4 @@
-import { PublishingBook } from "../models/publishing-book.model";
+import { PublishingBook } from "../../database/models/publishing-book.model";
 
 export const publishingBooksProviders = [
   {

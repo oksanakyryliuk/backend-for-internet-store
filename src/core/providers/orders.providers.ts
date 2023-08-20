@@ -1,4 +1,4 @@
-import { Order } from "../models/order.model";
+import { Order } from "../../database/models/order.model";
 
 export const ordersProviders = [
   {

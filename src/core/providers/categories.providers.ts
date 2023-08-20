@@ -1,4 +1,4 @@
-import { Category } from "../models/category.model";
+import { Category } from "../../database/models/category.model";
 
 export const categoriesProviders = [
   {

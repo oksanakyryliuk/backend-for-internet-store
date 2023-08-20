@@ -1,4 +1,4 @@
-import { Author } from "../models/author.model";
+import { Author } from "../../database/models/author.model";
 
 export const authorsProviders = [
   {

@@ -1,4 +1,4 @@
-import { CategoryBook } from "../models/category-book.model";
+import { CategoryBook } from "../../database/models/category-book.model";
 
 export const categoriesBooksProviders = [
   {

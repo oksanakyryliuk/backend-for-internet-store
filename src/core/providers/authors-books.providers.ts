@@ -1,5 +1,4 @@
-import { AuthorBook } from "../models/author-book.model";
-
+import { AuthorBook } from "../../database/models/author-book.model";
 export const authorsBooksProviders = [
   {
     provide: 'AUTHORS_BOOKS_REPOSITORY',
