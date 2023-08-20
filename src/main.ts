@@ -6,7 +6,7 @@ import { ValidationPipe, Logger } from '@nestjs/common'
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
-  app.use('json', { limit: '10mb' });
+  // app.use('json', { limit: '10mb' });
   app.setGlobalPrefix('api');
   app.enableCors();
 
