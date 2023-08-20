@@ -7,6 +7,8 @@ import { Public } from 'src/common/decorators/public.decorator';
 import { ApiTags } from '@nestjs/swagger';
 import { LoginUserDto } from '../users/dto/login-user.dro';
 import {ApiOperation} from '@nestjs/swagger'
+import { Roles } from 'src/common/decorators/role.decorator';
+import { Role } from 'src/common/enums/role.enum';
 
 @ApiTags('Auth API')
 @Controller('auth')
@@ -49,7 +51,7 @@ export class AuthController {
     });
   }
 
-
+@Roles(Role.User)
   @Get('test')
   test() {
     return 'Guard works'
