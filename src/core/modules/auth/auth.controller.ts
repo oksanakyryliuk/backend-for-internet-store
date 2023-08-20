@@ -6,6 +6,7 @@ import { CreateUserDto } from '../users/dto/create-user.dto';
 import { Public } from 'src/common/decorators/public.decorator';
 import { ApiTags } from '@nestjs/swagger';
 import { LoginUserDto } from '../users/dto/login-user.dro';
+import {ApiOperation} from '@nestjs/swagger'
 
 @ApiTags('Auth API')
 @Controller('auth')
@@ -18,6 +19,7 @@ export class AuthController {
 
   @Public()
   @Post('/signup')
+  @ApiOperation({ summary: 'Endpoint for registration user' })
   async register(@Body() createUserDto: CreateUserDto) {
     const check = await this.userService.getByUserName(createUserDto.username);
     if (check) return 'user exist'
@@ -30,6 +32,7 @@ export class AuthController {
 
   @Public()
   @Post("/login")
+  @ApiOperation({ summary: 'Endpoint for login user' })
   async login(@Body() loginDto: LoginUserDto) {
     const user = await this.userService.getByUserName(loginDto.username);
     if (!user) {
