@@ -1,11 +1,23 @@
 import { Column, Model, Table, DataType, AllowNull } from 'sequelize-typescript';
-
+import { ApiProperty } from '@nestjs/swagger';
 @Table
 export class User extends Model<User> {
+  
    
+  @ApiProperty()
   @AllowNull(false)
   @Column
-  nickname: string;
+  firstName: string;
+
+  
+  @AllowNull(false)
+  @Column
+  lastName: string;
+
+
+  @AllowNull(false)
+  @Column
+  username: string;
 
   
   @AllowNull(false)
@@ -13,16 +25,18 @@ export class User extends Model<User> {
   email: string;
 
   @AllowNull(false)
+  @Column({
+    defaultValue: false,
+    type: DataType.BOOLEAN
+  })
+  isAdmin: boolean;
+
+  @AllowNull(false)
   @Column
   password: string;
 
 
-  @AllowNull(false)
-  @Column
-  appUserId: string;
-
-
-  @Column
+   @Column
   createdAt: Date;
   
   @Column

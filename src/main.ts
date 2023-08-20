@@ -7,7 +7,7 @@ async function bootstrap() {
 
 
   const swaggerConfig = new DocumentBuilder()
-  .setTitle('Game swagger: ')
+  .setTitle('Book-Discovery swagger: ')
   // .setDescription('The cats API description')
   .setVersion('1.0')
   .addBearerAuth()
