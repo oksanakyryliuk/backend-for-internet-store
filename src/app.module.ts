@@ -31,6 +31,5 @@ import { OrdersModule } from './core/modules/orders/orders.module';
 
   ],
   controllers: [],
-  providers: [OrdersService],
 })
 export class AppModule {}

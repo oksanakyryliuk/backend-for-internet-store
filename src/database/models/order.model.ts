@@ -18,15 +18,18 @@ export class Order extends Model<Order> {
 
 
   @Column
-  price: string ;
+  price: number ;
   
-  @Column
+  @Column({
+    type: DataType.DATE,
+    allowNull: false,
+  })
   date: Date;
 
+  @AllowNull(false)
   @Column({
     values: ['pending', 'payment pending', 'processing', 'delivered', 'complete', 'canceled', 'returned'],
   })
-  @AllowNull(false)
   status: string
 
 }

@@ -32,7 +32,7 @@ export class OrdersController {
     @Delete(':id')
     remove(@Param('id') id): string{
         this.ordersService.removeOrder(id);
-    return `Delete order by ${id}`
+    return `Delete order by ID: ${id}`
     }
 
     @Put(':id')
