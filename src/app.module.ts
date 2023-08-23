@@ -6,6 +6,7 @@ import databaseConfig from './config/database.config';
 import { VALIDATOR } from "./config/env-config.validator";
 import { UsersModule } from './core/modules/users/users.module';
 import { AuthModule } from './core/modules/auth/auth.module';
+import { CategoriesModule } from './core/modules/categories/categories.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { AuthModule } from './core/modules/auth/auth.module';
     }),
     UsersModule,
     AuthModule,
+    CategoriesModule,
 
   ],
   controllers: [],
