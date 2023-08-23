@@ -12,29 +12,29 @@ export class CategoriesController {
 
     @Get('/allListCategories')
     async getAll(){
-        return this.categoriesService.getAll();
+        return this.categoriesService.getAllCategory();
       }
 
  
      @Get(':id') 
      getOne(@Param('id') id){
-          return this.categoriesService.getOneById(id);
+          return this.categoriesService.getOneByIdCategory(id);
       }
 
     @Post('/create')
     async create(@Body() body: CreateCategoryDto): Promise<Category> {
-        return this.categoriesService.create(body);
+        return this.categoriesService.createCategory(body);
       }
      
       
     @Delete(':id')
     remove(@Param('id') id): any{
-        return this.categoriesService.remove(id);
+        return this.categoriesService.removeCategory(id);
     }
 
     @Put(':id')
     edit(@Body() updateDto: UpdateCategoryDto, @Param('id') id: any) {
-        return this.categoriesService.edit(id, updateDto);
+        return this.categoriesService.editCategory(id, updateDto);
     }
 
 }

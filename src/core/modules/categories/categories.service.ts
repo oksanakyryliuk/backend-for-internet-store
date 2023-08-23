@@ -11,25 +11,25 @@ export class CategoriesService {
         ){}
 
 
-    create(payload: CreateCategoryDto): Promise<Category> {
+    createCategory(payload: CreateCategoryDto): Promise<Category> {
         return this.categoriesModule.create(payload);
       }
 
-      async getAll(): Promise<Category[]> {
+      async getAllCategory(): Promise<Category[]> {
         return this.categoriesModule.findAll();
     }
      
-    async getOneById(id: number): Promise<Category> {
+    async getOneByIdCategory(id: number): Promise<Category> {
         return this.categoriesModule.findByPk(id)
     }
  
 
-    async remove(id: number) {
+    async removeCategory(id: number) {
         return await this.categoriesModule.destroy( {where: { id: id }
         });
     }
 
-    async edit(id: number, updateData: UpdateCategoryDto): Promise<Category> {
+    async editCategory(id: number, updateData: UpdateCategoryDto): Promise<Category> {
         const existingCategory = await this.categoriesModule.findByPk(id);
         
         if (!existingCategory) {
