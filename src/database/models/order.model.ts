@@ -23,7 +23,10 @@ export class Order extends Model<Order> {
   @Column
   date: Date;
 
-  @Column
-  status: string;
+  @Column({
+    values: ['pending', 'payment pending', 'processing', 'delivered', 'complete', 'canceled', 'returned'],
+  })
+  @AllowNull(false)
+  status: string
 
 }

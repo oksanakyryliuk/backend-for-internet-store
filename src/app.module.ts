@@ -7,6 +7,8 @@ import { VALIDATOR } from "./config/env-config.validator";
 import { UsersModule } from './core/modules/users/users.module';
 import { AuthModule } from './core/modules/auth/auth.module';
 import { CategoriesModule } from './core/modules/categories/categories.module';
+import { OrdersService } from './core/modules/orders/orders.service';
+import { OrdersModule } from './core/modules/orders/orders.module';
 
 @Module({
   imports: [
@@ -25,9 +27,10 @@ import { CategoriesModule } from './core/modules/categories/categories.module';
     UsersModule,
     AuthModule,
     CategoriesModule,
+    OrdersModule,
 
   ],
   controllers: [],
-  providers: [],
+  providers: [OrdersService],
 })
 export class AppModule {}
