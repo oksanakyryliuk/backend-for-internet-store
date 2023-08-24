@@ -6,6 +6,10 @@ import databaseConfig from './config/database.config';
 import { VALIDATOR } from "./config/env-config.validator";
 import { UsersModule } from './core/modules/users/users.module';
 import { AuthModule } from './core/modules/auth/auth.module';
+import { CategoriesModule } from './core/modules/categories/categories.module';
+import { OrdersModule } from './core/modules/orders/orders.module';
+import { AuthorsModule } from './core/modules/authors/authors.module';
+import { BooksModule } from './core/modules/books/books.module';
 
 @Module({
   imports: [
@@ -23,9 +27,12 @@ import { AuthModule } from './core/modules/auth/auth.module';
     }),
     UsersModule,
     AuthModule,
+    CategoriesModule,
+    OrdersModule,
+    AuthorsModule,
+    BooksModule,
 
   ],
   controllers: [],
-  providers: [],
 })
 export class AppModule {}
