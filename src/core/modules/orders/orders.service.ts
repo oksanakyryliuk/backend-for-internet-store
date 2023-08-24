@@ -34,7 +34,7 @@ export class OrdersService {
         const existingOrder = await this.ordersModule.findByPk(id);
 
         if (!existingOrder) {
-            throw new NotFoundException(`Category with ID ${id} not found`);
+            throw new NotFoundException(`Order with ID ${id} not found`);
         }
         await existingOrder.update(updateData);
         return existingOrder.save();

@@ -34,7 +34,7 @@ export class AuthorsService {
         const existingAuthor = await this.authorsModule.findByPk(id);
         
         if (!existingAuthor) {
-          throw new NotFoundException(`Category with ID ${id} not found`);
+          throw new NotFoundException(`Author with ID ${id} not found`);
         }
         await existingAuthor.update(updateData);
         return existingAuthor.save();

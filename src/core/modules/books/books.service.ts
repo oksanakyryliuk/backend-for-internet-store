@@ -34,7 +34,7 @@ export class BooksService {
         const existingBook = await this.booksModule.findByPk(id);
         
         if (!existingBook) {
-          throw new NotFoundException(`Category with ID ${id} not found`);
+          throw new NotFoundException(`Book with ID ${id} not found`);
         }
         await existingBook.update(updateData);
         return existingBook.save();
