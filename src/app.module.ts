@@ -11,6 +11,7 @@ import { OrdersModule } from './core/modules/orders/orders.module';
 import { AuthorsModule } from './core/modules/authors/authors.module';
 import { BooksModule } from './core/modules/books/books.module';
 import { LanguagesModule } from './core/modules/languages/languages.module';
+import { PublishingModule } from './core/modules/publishing/publishing.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { LanguagesModule } from './core/modules/languages/languages.module';
     AuthorsModule,
     BooksModule,
     LanguagesModule,
+    PublishingModule,
 
   ],
 })
