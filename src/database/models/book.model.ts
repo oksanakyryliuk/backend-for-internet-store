@@ -21,19 +21,23 @@ export class Book extends Model<Book> {
 
     @AllowNull(false)
     @Column
-    publishingId: string;
+    publishingId: number;
 
     @AllowNull(false)
-    @Column
-    publicateDate: string;
+    @Column({
+        type: DataType.DATE,
+        allowNull: false,
+      })
+      publicateDate: Date;
+    
     
     @AllowNull(false)
     @Column
-    pages: string;
+    pages: number;
 
     @AllowNull(false)
     @Column
-    price: string;
+    price: number;
 
     @BelongsToMany(() => Category, { as: 'categoryBooks', through: () => CategoryBook, foreignKey: 'bookId' })
     categoryBooks: Category[];

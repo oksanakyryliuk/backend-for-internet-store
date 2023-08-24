@@ -9,6 +9,7 @@ import { AuthModule } from './core/modules/auth/auth.module';
 import { CategoriesModule } from './core/modules/categories/categories.module';
 import { OrdersModule } from './core/modules/orders/orders.module';
 import { AuthorsModule } from './core/modules/authors/authors.module';
+import { BooksModule } from './core/modules/books/books.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { AuthorsModule } from './core/modules/authors/authors.module';
     CategoriesModule,
     OrdersModule,
     AuthorsModule,
+    BooksModule,
 
   ],
   controllers: [],
