@@ -9,6 +9,7 @@ import { ordersProviders } from './orders.providers';
 import { usersProviders } from './users.providers';
 import { publishingsProviders } from './publishing.providers';
 import { publishingBooksProviders } from './publishing-books.provider';
+import { languagesProviders } from './languages.providers';
 
 @Module({
 
@@ -22,7 +23,8 @@ import { publishingBooksProviders } from './publishing-books.provider';
         ...ordersProviders,
         ...usersProviders,
         ...publishingsProviders,
-        ...publishingBooksProviders
+        ...publishingBooksProviders,
+        ...languagesProviders
     ],
     exports: [
         ...authorsProviders,
@@ -34,7 +36,8 @@ import { publishingBooksProviders } from './publishing-books.provider';
         ...ordersProviders,
         ...usersProviders,
         ...publishingsProviders,
-        ...publishingBooksProviders
+        ...publishingBooksProviders,
+        ...languagesProviders
     ]
 })
 export class ProvidersModule { }

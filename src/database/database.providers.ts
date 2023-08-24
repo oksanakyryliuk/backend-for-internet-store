@@ -9,6 +9,7 @@ import { Order } from './models/order.model';
 import { OrderBook } from './models/order-book.model';
 import { Publishing } from './models/publishing.model';
 import { PublishingBook } from './models/publishing-book.model';
+import { Language } from './models/language.model';
 
 export const databaseProviders = [
   {
@@ -22,7 +23,7 @@ export const databaseProviders = [
         password: process.env.DB_PASSWORD,
         database: process.env.DB_SCHEMA,
       });
-      sequelize.addModels([User, Author, AuthorBook, Book, Category, CategoryBook, Order, OrderBook, Publishing, PublishingBook]);
+      sequelize.addModels([User, Author, AuthorBook, Book, Category, CategoryBook, Order, OrderBook, Publishing, PublishingBook, Language]);
       // await sequelize.sync();
       await sequelize.sync(
          { alter: true }
