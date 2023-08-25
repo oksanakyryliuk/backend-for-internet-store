@@ -11,8 +11,8 @@ export class Category extends Model<Category> {
   @Column
   name: string;
   
-   @BelongsToMany(() => Book, { as: 'bookCategories', through: () => CategoryBook, foreignKey: 'categoryId' })
-   bookCategories: Book[];
+   @BelongsToMany(() => Book, { as: 'categoryBooks', through: () => CategoryBook, foreignKey: 'categoryId' })
+   categoryBooks: Book[];
 
   //  @BelongsTo(() => Book)
   //  book: Book;

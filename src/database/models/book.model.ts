@@ -39,8 +39,8 @@ export class Book extends Model<Book> {
     @Column
     price: number;
 
-    @BelongsToMany(() => Category, { as: 'categoryBooks', through: () => CategoryBook, foreignKey: 'bookId' })
-    categoryBooks: Category[];
+    @BelongsToMany(() => Category, { as: 'bookCategories', through: () => CategoryBook, foreignKey: 'bookId' })
+    bookCategories: Category[];
 
 
     // toJSON(): any {

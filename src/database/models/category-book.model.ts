@@ -10,7 +10,11 @@ export class CategoryBook extends Model<CategoryBook> {
   @ForeignKey(() => Book)
   @Column({
     type: DataType.INTEGER,
-    allowNull: false
+    allowNull: false,
+    references:{
+      model: Book,
+      key: 'id'
+    }
   })
   bookId: number;
 
@@ -18,14 +22,18 @@ export class CategoryBook extends Model<CategoryBook> {
   @ForeignKey(() => Category)
   @Column({
     type: DataType.INTEGER,
-    allowNull: false
+    allowNull: false,
+    references:{
+      model: Category,
+      key: 'id'
+    }
   })
   categoryId: number;
 
-  @BelongsTo( () => Book, 'bookId')
+  @BelongsTo( () => Book, { foreignKey: 'bookId'})
   book: Book;
 
-  @BelongsTo( () => Category, 'categoryId')
+  @BelongsTo( () => Category ,{ foreignKey: 'categoryId'})
   category: Category;
 
 
