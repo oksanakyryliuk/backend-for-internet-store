@@ -27,5 +27,12 @@ export class CategoryBooksController {
       return this.categoriesBooksService.getBooksByCategory(categoryId)
     }
   
+    @Get('/:bookId/allCategories')
+    @ApiOperation({ summary: 'Endpoint for getting all categories of the book.' })
+    async getAllCategoriesForBook(@Param('bookId') bookId: number) {
+      return this.categoriesBooksService.getCategoriesByBook(bookId)
+    }
+  
+
 
 }

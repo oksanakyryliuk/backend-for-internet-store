@@ -10,7 +10,10 @@ export class CategoryBooksService {
     private  categoruBookRepo: typeof CategoryBook ,
     
     @Inject('CATEGORIES_REPOSITORY') 
-    private  categoryRepo: typeof Category
+    private  categoryRepo: typeof Category,
+    
+    @Inject('BOOKS_REPOSITORY') 
+    private  booksRepo: typeof Book
     
     //  private readonly categoriesService: CategoriesService
     
@@ -45,6 +48,29 @@ export class CategoryBooksService {
         throw error; // Rethrow the error or handle it gracefully as per your application's requirement
       }
     }
+
+    async  getCategoriesByBook(bookId:number): Promise<any>{
+        try {
+           const book = await this.booksRepo.findOne({
+              where: { id: bookId },
+           include: [
+            {
+               model: Category,
+               through: { // Specify the intermediate model (junction table) here
+                attributes: [],
+                    where: { bookId: bookId },
+               },
+               as: 'bookCategories',
+             },
+           ],
+           });
+      
+          return book.bookCategories;
+        } catch (error) {
+          console.error(error);
+          throw error; // Rethrow the error or handle it gracefully as per your application's requirement
+        }
+      }
 
 
 }
