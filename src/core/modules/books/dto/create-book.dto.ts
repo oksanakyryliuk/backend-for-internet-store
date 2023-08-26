@@ -13,8 +13,9 @@ export class CreateBookDto {
 
 
       @ApiProperty()
-      @IsString()
-      language: string;
+      @IsOptional()
+      @IsNumber()
+      languageId: number;
 
       @ApiProperty()
       @IsOptional()

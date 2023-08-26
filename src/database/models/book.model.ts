@@ -5,6 +5,9 @@ import { Category } from './category.model';
 import { Author } from './author.model';
 import { BelongsToMany, BelongsTo } from 'sequelize-typescript';
 import { Publishing } from './publishing.model';
+import { Order } from './order.model';
+import { OrderBook } from './order-book.model';
+import { Language } from './language.model';
 
 @Table({
   tableName: 'books'  
@@ -20,9 +23,19 @@ export class Book extends Model<Book> {
     @Column(DataType.TEXT('medium')) 
     image: string   
     
-    @AllowNull(false)
-    @Column
-    language: string;
+    @ForeignKey(()=> Language)
+    @AllowNull(true)
+    @Column ({
+      type: DataType.INTEGER,
+      allowNull: true,
+      defaultValue: null,
+      onUpdate: 'NO ACTION',
+      onDelete: 'NO ACTION',
+      references:{
+        model: Language,
+        key: 'id'}
+  })
+    languageId: number;
 
    
     @ForeignKey(()=> Publishing)
@@ -30,7 +43,7 @@ export class Book extends Model<Book> {
     @Column
     ({
       type: DataType.INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: null,
       onUpdate: 'NO ACTION',
       onDelete: 'NO ACTION',
@@ -63,8 +76,14 @@ export class Book extends Model<Book> {
     @BelongsToMany(() => Author, { as: 'bookAuthors', through: () => AuthorBook, foreignKey: 'bookId' })
     bookAuthors: Author[];
 
+    @BelongsToMany(() => Order, { as: 'bookOrders', through: () => OrderBook, foreignKey: 'bookId' })
+    bookOrders: Order[];
+
     @BelongsTo( () => Publishing ,{ foreignKey: 'publishingId'})
     publishing: Publishing;
+
+    @BelongsTo( () => Language ,{ foreignKey: 'languageId'})
+    language: Language;
 
     // toJSON(): any {
     //     const values = Object.assign({}, this.get());

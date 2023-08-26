@@ -44,7 +44,12 @@ export class BooksController {
     }
 
     @Put(':id/publishing')
-    async createp(@Param('id') id:number, @Query('publishingId') publishingId: number){
+    async addPublishing(@Param('id') id:number, @Query('publishingId') publishingId: number){
       return this.booksService.addPublishingToBook(id, publishingId);
+    }
+
+    @Put(':id/language')
+    async addLanguage(@Param('id') id:number, @Query('languageId') languageId: number){
+      return this.booksService.addLanguageToBook(id, languageId);
     }
 }
