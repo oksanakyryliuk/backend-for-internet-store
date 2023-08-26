@@ -2,6 +2,7 @@ import { IsEnum, IsDate, IsNumber, IsString, IsOptional, IsBoolean } from "class
 import { ApiProperty } from "@nestjs/swagger";
 import { StatusEnum } from "src/common/enums/status.enum";
 import { Type } from "class-transformer";
+import { Default } from "sequelize-typescript";
 
 
 export class CreateOrderDto {
@@ -9,9 +10,9 @@ export class CreateOrderDto {
       @IsString()
       name: string;
     
-      @ApiProperty()
-      @IsNumber()
-      userId: string;
+      // @ApiProperty()
+      // @IsNumber()
+      // userId: number;
     
       @ApiProperty()
       @IsString()
@@ -27,6 +28,7 @@ export class CreateOrderDto {
       date: Date;
     
       @ApiProperty()
+      @IsOptional()
       @IsEnum(StatusEnum)
       status: string;
 }

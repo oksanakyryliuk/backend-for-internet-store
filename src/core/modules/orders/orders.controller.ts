@@ -4,6 +4,7 @@ import { OrdersService } from './orders.service';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { Order } from 'src/database/models/order.model';
+import { GetUser } from 'src/common/decorators/getUser.decorator';
 
 @ApiTags('Orders')
 @Controller('orders')
@@ -24,8 +25,8 @@ export class OrdersController {
     }
 
     @Post('')
-    async create(@Body() body: CreateOrderDto): Promise<Order> {
-        return this.ordersService.createOrder(body);
+    async create(@Body() body: CreateOrderDto, @GetUser() user): Promise<Order> {
+        return this.ordersService.createOrder(body, user.username);
     }
 
 
