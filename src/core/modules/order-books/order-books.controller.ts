@@ -8,7 +8,7 @@ export class OrderBooksController {
     constructor(private readonly orderBooksService: OrderBooksService) {}
    
     @Post('/:bookId/:orderId')
-    @ApiOperation({ summary: 'Endpoint for combinating of genre and book' })
+    @ApiOperation({ summary: 'Endpoint for combinating of order and book' })
     async addOrderBook(@Param('bookId') bookId: number, @Param('orderId') orderId: number) {
       return this.orderBooksService.addOrderBook(bookId, orderId)
     }

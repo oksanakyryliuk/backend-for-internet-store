@@ -9,6 +9,7 @@ export class CategoryBooksController {
     constructor(private readonly categoriesBooksService: CategoryBooksService) {}
 
     @Get('list')
+    @ApiOperation({ summary: 'Endpoint for testing' })
     async getAll(){
         return 'work';
       }
