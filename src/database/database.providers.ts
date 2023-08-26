@@ -23,7 +23,7 @@ export const databaseProviders = [
         database: process.env.DB_SCHEMA,
       });
       
-      sequelize.addModels([User, Category, Author,Publishing,Order,OrderBook, Book, CategoryBook, AuthorBook, Language]);
+      sequelize.addModels([User, Language, Category, Author,Publishing,Order,OrderBook, Book, CategoryBook, AuthorBook]);
       // await sequelize.sync();
       await sequelize.sync(
          { alter: true }
