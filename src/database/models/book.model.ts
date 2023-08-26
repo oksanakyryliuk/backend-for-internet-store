@@ -1,11 +1,14 @@
-import { Column, Model, Table, DataType, AllowNull } from 'sequelize-typescript';
+import { Column, Model, Table, DataType, AllowNull, ForeignKey } from 'sequelize-typescript';
 import { CategoryBook } from './category-book.model';
 import { AuthorBook } from './author-book.model';
 import { Category } from './category.model';
 import { Author } from './author.model';
-import { BelongsToMany } from 'sequelize-typescript';
+import { BelongsToMany, BelongsTo } from 'sequelize-typescript';
+import { Publishing } from './publishing.model';
 
-@Table
+@Table({
+  tableName: 'books'  
+})
 export class Book extends Model<Book> {
 
 
@@ -21,9 +24,20 @@ export class Book extends Model<Book> {
     @Column
     language: string;
 
+   
+    @ForeignKey(()=> Publishing)
     @AllowNull(false)
     @Column
+  //   ({
+  //     type: DataType.INTEGER,
+  //     allowNull: false,
+  //     defaultValue: null,
+  //     references:{
+  //       model: Publishing,
+  //       key: 'id'}
+  // })
     publishingId: number;
+
 
     @AllowNull(false)
     @Column({
@@ -47,6 +61,8 @@ export class Book extends Model<Book> {
     @BelongsToMany(() => Author, { as: 'bookAuthors', through: () => AuthorBook, foreignKey: 'bookId' })
     bookAuthors: Author[];
 
+    // @BelongsTo( () => Publishing ,{ foreignKey: 'publishingId'})
+    // publishing: Publishing;
 
     // toJSON(): any {
     //     const values = Object.assign({}, this.get());

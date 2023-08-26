@@ -22,8 +22,8 @@ export const databaseProviders = [
         password: process.env.DB_PASSWORD,
         database: process.env.DB_SCHEMA,
       });
-      sequelize.addModels([User, Category, CategoryBook, Book, Author, AuthorBook, Order, OrderBook, Publishing, Language,]);
-      // sequelize.addModels([User, Author, AuthorBook, Book,Category, CategoryBook, Order, OrderBook, Publishing, PublishingBook, Language]);
+      
+      sequelize.addModels([User, Category, Author,Publishing, Book, CategoryBook, AuthorBook, Order, OrderBook, Language]);
       // await sequelize.sync();
       await sequelize.sync(
          { alter: true }

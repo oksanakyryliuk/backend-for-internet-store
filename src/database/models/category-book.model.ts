@@ -4,7 +4,9 @@ import { ForeignKey } from 'sequelize-typescript';
 import { Book } from './book.model';
 import { BelongsTo, BelongsToMany } from 'sequelize-typescript';
 
-@Table
+@Table({
+  tableName: 'categorybooks'  
+})
 export class CategoryBook extends Model<CategoryBook> {
 
   @ForeignKey(() => Book)

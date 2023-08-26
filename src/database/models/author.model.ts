@@ -3,8 +3,9 @@ import { BelongsToMany } from 'sequelize-typescript';
 import { AuthorBook } from './author-book.model';
 import { Book } from './book.model';
 
-@Table
-export class Author extends Model<Author> {
+@Table({
+  tableName: 'authors'  
+})export class Author extends Model<Author> {
 
   @AllowNull(false)
   @Column

@@ -1,9 +1,10 @@
-import { Controller, Get, Param, Body, Put, Post, Delete, BadRequestException } from '@nestjs/common';
+import { Controller, Get, Param, Body, Put, Post, Delete, BadRequestException, Query } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { BooksService } from './books.service';
 import { Book } from 'src/database/models/book.model';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { CreateBookDto } from './dto/create-book.dto';
+import { Publishing } from 'src/database/models/publishing.model';
 
 @ApiTags('Books')
 @Controller('books')
@@ -42,4 +43,8 @@ export class BooksController {
         return this.booksService.editBook(id, updateDto);
     }
 
+    @Put(':id/publishing')
+    async createp(@Param('id') id:number, @Query('publishingId') publishingId: number){
+      return this.booksService.addPublishingToBook(id, publishingId);
+    }
 }

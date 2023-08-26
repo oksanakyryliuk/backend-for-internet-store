@@ -4,7 +4,9 @@ import { BelongsToMany, BelongsTo
  import { CategoryBook } from './category-book.model';
 import { Book } from './book.model';
 
-@Table
+@Table({
+  tableName: 'categories'  
+})
 export class Category extends Model<Category> {
 
   @AllowNull(false)
