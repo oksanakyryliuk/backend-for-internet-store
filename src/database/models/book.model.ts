@@ -26,16 +26,18 @@ export class Book extends Model<Book> {
 
    
     @ForeignKey(()=> Publishing)
-    @AllowNull(false)
+    @AllowNull(true)
     @Column
-  //   ({
-  //     type: DataType.INTEGER,
-  //     allowNull: false,
-  //     defaultValue: null,
-  //     references:{
-  //       model: Publishing,
-  //       key: 'id'}
-  // })
+    ({
+      type: DataType.INTEGER,
+      allowNull: false,
+      defaultValue: null,
+      onUpdate: 'NO ACTION',
+      onDelete: 'NO ACTION',
+      references:{
+        model: Publishing,
+        key: 'id'}
+  })
     publishingId: number;
 
 
@@ -61,8 +63,8 @@ export class Book extends Model<Book> {
     @BelongsToMany(() => Author, { as: 'bookAuthors', through: () => AuthorBook, foreignKey: 'bookId' })
     bookAuthors: Author[];
 
-    // @BelongsTo( () => Publishing ,{ foreignKey: 'publishingId'})
-    // publishing: Publishing;
+    @BelongsTo( () => Publishing ,{ foreignKey: 'publishingId'})
+    publishing: Publishing;
 
     // toJSON(): any {
     //     const values = Object.assign({}, this.get());

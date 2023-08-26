@@ -16,6 +16,6 @@ export class Publishing extends Model<Publishing> {
     @Column
     city: string;
 
-    // @HasMany(() => Book)
-    // book: Book[]
+    @HasMany(() => Book)
+    book: Book[]
 }
