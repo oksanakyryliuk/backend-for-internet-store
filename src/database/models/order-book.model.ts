@@ -6,12 +6,12 @@ import { Column, Model, Table, DataType, AllowNull } from 'sequelize-typescript'
 export class OrderBook extends Model<OrderBook> {
     @AllowNull(false)
     @Column
-    bookId: string;
+    bookId: number
   
     
     @AllowNull(false)
     @Column
-    orderId: string;
+    orderId: number;
   
   
     @Column
