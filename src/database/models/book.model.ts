@@ -1,9 +1,14 @@
 import { Column, Model, Table, DataType, AllowNull } from 'sequelize-typescript';
 import { CategoryBook } from './category-book.model';
+import { AuthorBook } from './author-book.model';
 import { Category } from './category.model';
+import { Author } from './author.model';
 import { BelongsToMany } from 'sequelize-typescript';
-import { DataTypes } from 'sequelize';
-@Table
+
+@Table({
+  freezeTableName: true,
+  tableName: "bookdiscovery.books"
+})
 export class Book extends Model<Book> {
 
 
@@ -41,6 +46,9 @@ export class Book extends Model<Book> {
 
     @BelongsToMany(() => Category, { as: 'bookCategories', through: () => CategoryBook, foreignKey: 'bookId' })
     bookCategories: Category[];
+
+    @BelongsToMany(() => Author, { as: 'bookAuthors', through: () => AuthorBook, foreignKey: 'bookId' })
+    bookAuthors: Author[];
 
 
     // toJSON(): any {
