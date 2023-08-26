@@ -2,10 +2,7 @@ import { Column, Model, Table, DataType, AllowNull, ForeignKey, BelongsTo } from
 import { Book } from './book.model';
 import { Author } from './author.model';
 
-@Table({
-  freezeTableName: true,
-  tableName: "bookdiscovery.authorbooks"
-})
+@Table
 export class AuthorBook extends Model<AuthorBook> {
 
     @ForeignKey(()=>Book)
