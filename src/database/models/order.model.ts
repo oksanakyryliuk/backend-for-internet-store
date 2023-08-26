@@ -1,4 +1,7 @@
 import { Column, Model, Table, DataType, AllowNull } from 'sequelize-typescript';
+import { OrderBook } from './order-book.model';
+import { BelongsToMany } from 'sequelize-typescript';
+import { Book } from './book.model';
 
 @Table({
   tableName: 'orders'  
@@ -33,5 +36,9 @@ export class Order extends Model<Order> {
     values: ['pending', 'payment pending', 'processing', 'delivered', 'complete', 'canceled', 'returned'],
   })
   status: string
+
+  @BelongsToMany(() => Book, { as: 'orderBooks', through: () =>OrderBook, foreignKey: 'orderId' })
+  orderBooks: Book[];
+
 
 }
