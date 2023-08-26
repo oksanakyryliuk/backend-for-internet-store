@@ -2,17 +2,23 @@ import { Injectable, NotFoundException, Inject } from '@nestjs/common';
 import { Order } from 'src/database/models/order.model';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { CreateOrderDto } from './dto/create-order.dto';
+import { User } from 'src/database/models/user.model';
+import { where } from 'sequelize';
+import { UsersService } from '../users/users.service';
 
 @Injectable()
 export class OrdersService {
     
     constructor(
         @Inject('ORDERS_REPOSITORY')
-        private  ordersModule: typeof Order       
+        private  ordersModule: typeof Order,       
+        private readonly usersService: UsersService
         ){}
 
-    async createOrder(payload: CreateOrderDto): Promise<Order> {
-        return this.ordersModule.create(payload);
+    async createOrder(payload: CreateOrderDto, username:string): Promise<Order> {
+      const userId = (await this.usersService.findOne({ where: { username: username } })).id;
+       const order={...payload, userId};
+        return this.ordersModule.create(order);
     }
 
     async getAllOrders(): Promise<Order[]> {

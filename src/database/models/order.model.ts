@@ -2,6 +2,8 @@ import { Column, Model, Table, DataType, AllowNull } from 'sequelize-typescript'
 import { OrderBook } from './order-book.model';
 import { BelongsToMany } from 'sequelize-typescript';
 import { Book } from './book.model';
+import { User } from './user.model';
+import { ForeignKey, BelongsTo } from 'sequelize-typescript';
 
 @Table({
   tableName: 'orders'  
@@ -14,8 +16,19 @@ export class Order extends Model<Order> {
 
   
   @AllowNull(false)
-  @Column
-  userId: string;
+  @ForeignKey(() => User)
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+    onUpdate: 'NO ACTION',
+    onDelete: 'NO ACTION',
+    references:{
+      model: User,
+      key: 'id'
+    }
+  })
+  userId: number;
+
 
   @AllowNull(false)
   @Column
@@ -31,14 +44,17 @@ export class Order extends Model<Order> {
   })
   date: Date;
 
-  @AllowNull(false)
+  @AllowNull(true)
   @Column({
-    values: ['pending', 'payment pending', 'processing', 'delivered', 'complete', 'canceled', 'returned'],
+    type: DataType.ENUM('pending', 'payment pending', 'processing', 'delivered', 'complete', 'canceled', 'returned'),
+    defaultValue: 'pending',
   })
   status: string
 
   @BelongsToMany(() => Book, { as: 'orderBooks', through: () =>OrderBook, foreignKey: 'orderId' })
   orderBooks: Book[];
 
+  @BelongsTo (() => User, {foreignKey:'userId'})
+  user: User;
 
 }
