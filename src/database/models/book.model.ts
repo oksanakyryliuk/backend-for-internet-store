@@ -6,10 +6,6 @@ import { Author } from './author.model';
 import { BelongsToMany } from 'sequelize-typescript';
 
 @Table
-// ({
-//   freezeTableName: true,
-//   tableName: "bookdiscovery.books"
-// })
 export class Book extends Model<Book> {
 
 
