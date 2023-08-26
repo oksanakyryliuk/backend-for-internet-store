@@ -52,6 +52,7 @@ export class AuthController {
   }
 
 @Roles(Role.User)
+@ApiOperation({ summary: 'Endpoint for testing guards roles' })
   @Get('test')
   test() {
     return 'Guard works'
