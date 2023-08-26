@@ -1,6 +1,8 @@
 import { Column, Model, Table, DataType, AllowNull } from 'sequelize-typescript';
 
-@Table
+@Table({
+    tableName: 'orderbooks'  
+  })
 export class OrderBook extends Model<OrderBook> {
     @AllowNull(false)
     @Column

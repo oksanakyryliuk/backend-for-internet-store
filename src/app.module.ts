@@ -12,6 +12,8 @@ import { AuthorsModule } from './core/modules/authors/authors.module';
 import { BooksModule } from './core/modules/books/books.module';
 import { LanguagesModule } from './core/modules/languages/languages.module';
 import { PublishingModule } from './core/modules/publishing/publishing.module';
+import { CategoryBooksModule } from './core/modules/category-books/category-books.module';
+import { AuthorBooksModule } from './core/modules/author-books/author-books.module';
 
 @Module({
   imports: [
@@ -35,6 +37,8 @@ import { PublishingModule } from './core/modules/publishing/publishing.module';
     BooksModule,
     LanguagesModule,
     PublishingModule,
+    CategoryBooksModule,
+    AuthorBooksModule,
 
   ],
 })

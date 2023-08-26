@@ -17,6 +17,7 @@ export class CreateBookDto {
       language: string;
 
       @ApiProperty()
+      @IsOptional()
       @IsNumber()
       publishingId: number;
 

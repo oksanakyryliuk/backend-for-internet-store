@@ -1,6 +1,10 @@
-import { Column, Model, Table, DataType, AllowNull } from 'sequelize-typescript';
+import { Column, Model, Table, DataType, AllowNull, HasMany } from 'sequelize-typescript';
+import { Book } from './book.model';
 
 @Table
+({
+  tableName: 'publishings'  
+})
 export class Publishing extends Model<Publishing> {
 
     @AllowNull(false)
@@ -12,4 +16,6 @@ export class Publishing extends Model<Publishing> {
     @Column
     city: string;
 
+    @HasMany(() => Book)
+    book: Book[]
 }
