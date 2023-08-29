@@ -1,10 +1,9 @@
-import { Controller, Get, Param, Body, Put, Post, Delete, BadRequestException, Query } from '@nestjs/common';
+import { Controller, Get, Param, Body, Put, Post, Delete, BadRequestException, Query, Req } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { BooksService } from './books.service';
 import { Book } from 'src/database/models/book.model';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { CreateBookDto } from './dto/create-book.dto';
-import { Publishing } from 'src/database/models/publishing.model';
 import { ApiOperation } from '@nestjs/swagger';
 
 @ApiTags('Books')
@@ -19,6 +18,17 @@ export class BooksController {
         return this.booksService.getAllBooks();
     }
 
+
+    @Get('/allSortFilterPad')
+    @ApiOperation({ summary: 'Endpoint for getting all books by filter, sort, and pagination' })
+    getll(@Req() request) {
+       try{
+         return this.booksService.getFilterSortPagBooks(request.query);
+          }
+        catch(e){
+            console.log(e);
+        }
+    }
 
     @Get(':id')
     @ApiOperation({ summary: 'Endpoint for getting one book by id' })
