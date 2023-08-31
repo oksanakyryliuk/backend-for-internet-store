@@ -1,4 +1,4 @@
-import { Controller, Post, Param } from '@nestjs/common';
+import { Controller, Post, Param, Query } from '@nestjs/common';
 import { OrderBooksService } from './order-books.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
@@ -9,8 +9,8 @@ export class OrderBooksController {
    
     @Post('/:bookId/:orderId')
     @ApiOperation({ summary: 'Endpoint for combinating of order and book' })
-    async addOrderBook(@Param('bookId') bookId: number, @Param('orderId') orderId: number) {
-      return this.orderBooksService.addOrderBook(bookId, orderId)
+    async addOrderBook(@Param('bookId') bookId: number, @Param('orderId') orderId: number, @Query('count') count: number) {
+      return this.orderBooksService.addOrderBook(bookId, orderId, count)
     }
 
 }

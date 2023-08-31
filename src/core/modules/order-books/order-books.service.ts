@@ -9,10 +9,11 @@ export class OrderBooksService {
         
         ){}
     
-        addOrderBook(bookId: number, orderId: number): Promise<OrderBook> {
+        addOrderBook(bookId: number, orderId: number, count:number): Promise<OrderBook> {
             return this.orderBookRepo.create({
               bookId,
-              orderId
+              orderId,
+              count
             })
           }   
 }
