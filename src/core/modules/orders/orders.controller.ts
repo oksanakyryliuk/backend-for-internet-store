@@ -20,12 +20,19 @@ export class OrdersController {
         return this.ordersService.getAllOrders();
     }
 
+    @Get('/allOrdersThisUser')
+    @ApiOperation({ summary: 'Endpoint for getting orders logger user' })
+    getAllOrdersByUser(@GetUser() user): Promise<Order[]> {
+        return this.ordersService.getAllOrdersByUser(user.username);
+    }
+
 
     @Get(':id')
     @ApiOperation({ summary: 'Endpoint for getting one order by id' })
     getOne(@Param('id') id: number): Promise<Order> {
         return this.ordersService.getOneByIdOrder(id);
     }
+
 
     @Post('')
     @ApiOperation({ summary: 'Endpoint for creating order' })

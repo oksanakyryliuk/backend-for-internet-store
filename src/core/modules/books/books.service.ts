@@ -27,6 +27,11 @@ export class BooksService {
       async getAllBooks(): Promise<Book[]> {
         return this.booksModule.findAll();
     }
+   
+    async findAllBooks(arrayOfIds): Promise<Book[]> {
+      return this.booksModule.findAll({where:{ id: arrayOfIds}});
+  }
+   
      
     async getOneByIdBook(id: number): Promise<Book> {
         return this.booksModule.findByPk(id)
