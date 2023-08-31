@@ -4,10 +4,6 @@ import { CreateBookDto } from './dto/create-book.dto';
 import { UpdateBookDto } from './dto/update-book.dto';
 import { Publishing } from 'src/database/models/publishing.model';
 import { Language } from 'src/database/models/language.model';
-import { Sequelize } from 'sequelize';
-import { Category } from 'src/database/models/category.model';
-import { Author } from 'src/database/models/author.model';
-import { Op } from 'sequelize';
 
 @Injectable()
 export class BooksService {
@@ -91,29 +87,6 @@ export class BooksService {
            return book
 
       }
-
-      async getFilterSortPagBooks(data): Promise<any> {
-      const {limit, page, sort, category, author, language, publishing}=data
-      let arrayModels=[]; 
-
-      if (author) {
-        const authorNameSurname = author.split(' ');
-               arrayModels.push({ model: Author, attributes: [], where: { name: authorNameSurname[0], surname: authorNameSurname[1]}});}
-      category?arrayModels.push({ model: Category, attributes: [], where: { name: category, } }):null;
-      language?arrayModels.push({ model: Language, attributes: [], where: { name: language} }):null;
-      publishing?arrayModels.push({ model: Publishing, attributes: [], where: { name: publishing} }):null;
-
-      return this.booksModule.findAndCountAll(
-          {
-          limit: limit ? parseInt(limit) : null,
-          offset: limit && page? (page - 1) * parseInt(limit) : null,
-          order: [[Sequelize.literal('price'), sort]],
-          include: arrayModels
-          }
-          );
-    }
-
-
-
+      
 
 }
